@@ -3,16 +3,29 @@
     padding: 0;
 }
 
+body {
+    height: 500vh;
+}
+
 a {
     text-decoration: none;
 }
 
 header {
-    height: 8vh;
-    padding: 10px 10px 10px;
+    height: 10vh;
+    width: 100%;
+    /* padding: 10px 10px 10px 10px; */
+    /* padding: 100px; */
     background-color: #ffffff;
     box-shadow: 1px 1px 2px #1e1e1ea7;
     border-radius: 5px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#logo>* {
+    padding: 10px;
 }
 
 #logo {
@@ -21,6 +34,7 @@ header {
     align-items: center;
     height: 100%;
     width: 100%;
+    padding: 2px;
 }
 
 #logo>div {
@@ -33,7 +47,11 @@ header {
 div.nav {
     box-shadow: 0px 0px 5px #4444448d;
     padding: 20px;
-    border-radius: 30%;
+    /* border-radius: 30%; */
+    /* border-end-end-radius: 30%; */
+    /* border-end-start-radius: 30%; */
+    /* border-end-end-radius: 30%; */
+    border-radius: 13em/3em;
     width: 30%;
     height: 20%;
 }
