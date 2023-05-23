@@ -1,5 +1,5 @@
 #filters {
-    height: 8vh;
+    height: 9vh;
     display: flex;
     /* grid-template-columns: repeat(auto-fit, 100px); */
     /* justify-content: space-between; */
@@ -13,8 +13,8 @@
     gap: 20px;
     padding: 3px;
     position: fixed;
+    top: 80px;
     left: 0;
-    top: header.width;
 
 }
 
