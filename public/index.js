@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // itemSelector: ".image-gallery img",
             // columnWidth: ".image-gallery img",
             percentPosition: true,
-            transitionDuration: "0.3s",
-            gutter: 8 /* Adjust the gutter size to match the CSS gap value */
+            transitionDuration: "0.1s",
+            gutter: 1 /* Adjust the gutter size to match the CSS gap value */
         });
     }
 

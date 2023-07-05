@@ -97,7 +97,7 @@ async function main() {
 
 // req.end();
 
-app.get("/", function (request, res) {
+app.get("/airbnb", function (request, res) {
     res.send("Hello");
     // res.send(body)
     // res.send(JSON.parse(chunks));
@@ -109,5 +109,9 @@ app.get("/homepage/", function (req, res) {
     console.log(chunks[0]);
     res.render("homepage", { result: chunks[0] });
 
+});
+app.get("/rooms/:id", function (req, res) {
+    console.log(req);
+    console.log(req.params.id);
 });
 app.listen(3000);

@@ -18,26 +18,101 @@
 </head>
 
 <body>
-    <main>
+    <div class="homepage">
         <header>
-
-        </header>
-        <div class="content">
-            <div class="image-gallery">
-                <% result.images.forEach(img=> { %>
-                    <img src=<%=img %> alt="home img">
-
-                    <% }); %>
+            <div class="homes">
+                <a href="/airbnb">
+                    <div>
+                        <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Back" role="img"
+                                focusable="false"
+                                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
+                                <path fill="none" d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4">
+                                </path>
+                            </svg></div>
+                        <div>
+                            <div>Homes</div>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <address>
-                <%= result.address %>
-            </address>
+            <div class="share-like">
+                <!-- <div class="share_button"><button aria-label="Share" type="button"><span><svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"
+                                role="presentation" focusable="false"
+                                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                                <g fill="none">
+                                    <path
+                                        d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9M16 3v23V3zM6 13l9.3-9.3a1 1 0 0 1 1.4 0L26 13">
+                                    </path>
+                                </g>
+                            </svg></span></button></div> -->
+                <div><button aria-label="Add listing to a list" data-testid="pdp-save-button-unsaved"
+                        type="button"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                aria-hidden="true" role="presentation" focusable="false"
+                                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                                <path
+                                    d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z">
+                                </path>
+                            </svg></span></button></div>
+            </div>
+    </div>
+    </header>
+    <main>
 
-        </div>
-        <footer>
-            <%= result.price %>
-        </footer>
     </main>
+    <footer>
+
+    </footer>
+    </div>
+    <div class="image-gallery">
+        <% result.images.forEach(img=> { %>
+            <img src=<%=img %> alt="home img">
+
+            <% }); %>
+    </div>
+    <hr>
+    <div class="details">
+        <p>
+            <%= result.name %>
+        </p>
+        <address>
+            <span><b>location:</b></span>
+            <%= result.address %>
+        </address>
+        <p>
+            rating: <%= result.rating %>
+                (
+                <%= result.reviewsCount %>
+                    )
+        </p>
+    </div>
+    <div class="pricing">
+        <% result.price.priceItems.forEach(item=> { %>
+            <p>
+                <span>
+                    <%=item.title %>
+                </span>
+                :
+                <span>
+                    <%= item.amount %>
+                </span>
+
+
+            </p>
+            <% }); %>
+                <p>
+                    <%= result.price.currency %>
+                        <%= result.price.total %>
+                </p>
+
+    </div>
+
+    <!-- <main>
+        <div class="content">
+            
+            
+        </div>
+    </main> -->
     <!--
                     <div id="map">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, accusamus.</div>
 
