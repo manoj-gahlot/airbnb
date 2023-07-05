@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="homepage">
+        <header>
+            <div class="homes">
+                <a href="/airbnb">
+                    <div>
+                        <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Back" role="img"
+                                focusable="false"
+                                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
+                                <path fill="none" d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4">
+                                </path>
+                            </svg></div>
+                        <div>
+                            <div>Homes</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="share-like">
+                <!-- <div class="share_button"><button aria-label="Share" type="button"><span><svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"
+                                role="presentation" focusable="false"
+                                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                                <g fill="none">
+                                    <path
+                                        d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9M16 3v23V3zM6 13l9.3-9.3a1 1 0 0 1 1.4 0L26 13">
+                                    </path>
+                                </g>
+                            </svg></span></button></div> -->
+                <div><button aria-label="Add listing to a list" data-testid="pdp-save-button-unsaved"
+                        type="button"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                aria-hidden="true" role="presentation" focusable="false"
+                                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;">
+                                <path
+                                    d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z">
+                                </path>
+                            </svg></span></button></div>
+            </div>
+    </div>
+    </header>
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
+    </div>
+    <div class="image-gallery">
+        <% result.images.forEach(img=> { %>
+            <img src=<%=img %> alt="home img">
+
+            <% }); %>
+    </div>
+    <hr>
+    <div class="details">
+        <p>
+            <%= result.name %>
+        </p>
+        <address>
+            <span><b>location:</b></span>
+            <%= result.address %>
+        </address>
+        <p>
+            rating: <%= result.rating %>
+                (
+                <%= result.reviewsCount %>
+                    )
+        </p>
+    </div>
+    <div class="pricing">
+        <% result.price.priceItems.forEach(item=> { %>
+            <p>
+                <span>
+                    <%=item.title %>
+                </span>
+                :
+                <span>
+                    <%= item.amount %>
+                </span>
+
+
+            </p>
+            <% }); %>
+                <p>
+                    <%= result.price.currency %>
+                        <%= result.price.total %>
+                </p>
+
+    </div>
+
+    <!-- <main>
+        <div class="content">
+            
+            
+        </div>
+    </main> -->
+    <!--
+                    <div id="map">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, accusamus.</div>
+
+
+                    <script>
+                        (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+                            key: "AIzaSyAmCVTqJaq2r55TBHKongEu_rV0-7yzLqI",
+                            v: "weekly",
+                            // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                            // Add other bootstrap parameters as needed, using camel case.
+                        });
+                    </script>
+                    <script>
+                        // Initialize and add the map
+                        let map;
+
+                        async function initMap() {
+                            // The location of Uluru
+                            const position = { lat: -25.344, lng: 131.031 };
+                            // Request needed libraries.
+                            //@ts-ignore
+                            const { Map } = await google.maps.importLibrary("maps");
+                            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+                            // The map, centered at Uluru
+                            map = new Map(document.getElementById("map"), {
+                                zoom: 4,
+                                center: position,
+                                mapId: "DEMO_MAP_ID",
+                            });
+
+                            // The marker, positioned at Uluru
+                            const marker = new AdvancedMarkerElement({
+                                map: map,
+                                position: position,
+                                title: "Uluru",
+                            });
+                        }
+
+                        initMap();
+                    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
