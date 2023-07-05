@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     var gallery = document.querySelector(".image-gallery");
     var masonry;
