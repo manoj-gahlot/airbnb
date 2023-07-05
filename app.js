@@ -98,7 +98,7 @@ async function main() {
 // req.end();
 
 app.get("/airbnb", function (request, res) {
-    res.send("Hello");
+    res.sendFile(__dirname + "/index.html");
     // res.send(body)
     // res.send(JSON.parse(chunks));
     // // console.log(req);
