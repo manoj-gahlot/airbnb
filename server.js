@@ -2,16 +2,21 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 const ejs = require("ejs");
+const path = require("path");
 const mongoose = require('mongoose');
+
+
 const app = express();
+
+
 app.set("view engine", "ejs");
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 var chunks = [];
-// const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
 
@@ -98,12 +103,15 @@ async function main() {
 // req.end();
 
 app.get("/airbnb", function (request, res) {
-    res.sendFile(__dirname + "/index.html");
+    // res.json({ "users": ["userOne", "userTwo", "userThree"] });
+    // res.send("Hello");
+    // res.sendFile(__dirname + "/index.html");
     // res.send(body)
     // res.send(JSON.parse(chunks));
     // // console.log(req);
     // res.send(body.string);
     // res.send("Hello");
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
 })
 app.get("/homepage/", function (req, res) {
     console.log(chunks[0]);
