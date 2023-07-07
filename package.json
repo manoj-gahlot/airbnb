@@ -17,7 +17,8 @@
     "https": "^1.0.0",
     "mongoose": "^7.2.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swiper": "^10.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.22.8",

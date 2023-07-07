@@ -111,7 +111,12 @@ app.get("/airbnb", function (request, res) {
     // // console.log(req);
     // res.send(body.string);
     // res.send("Hello");
+    // res.json(chunks);
+    // console.log(chunks);
     res.sendFile(path.join(__dirname, 'client/build/index.html'));
+})
+app.get("/airbnb/data", function (req, res) {
+    res.json(chunks);
 })
 app.get("/homepage/", function (req, res) {
     console.log(chunks[0]);
