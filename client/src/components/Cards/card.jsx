@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
+import { CardActionArea } from '@mui/material';
 // import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/css";
 // import "swiper/css/pagination";
@@ -8,10 +9,11 @@ import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 // import { Pagination, Navigation } from "swiper";
 
 function Card({ card }) {
-  return (
-    <div className="card-box">
-      <img src={card.imgSrc[0]} className="card-img" />
-      {/* <Swiper
+    return (
+        <div className="card-box">
+            <CardActionArea>
+                <img src={card.images[0]} className="card-img" />
+                {/* <Swiper
         slidesPerView={1}
         spaceBetween={15}
         loop={true}
@@ -27,20 +29,22 @@ function Card({ card }) {
           </SwiperSlide>
         ))}
       </Swiper> */}
-      <div className="card-info-flex">
-        <h3 className="card-title">{card.title}</h3>
-        <div className="card-rating">
-          <StarRateRoundedIcon />
-          <p>{card.rating}</p>
-        </div>
-      </div>
-      <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.desc}</p>
-      <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.date}</p>
-      <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
-        <span style={{ fontWeight: "600" }}>₹{card.price}</span> night
-      </p>
-    </div>
-  );
-}
+                <div className="card-info-flex">
+                    <h3 className="card-title">{card.city}</h3>
+                    <div className="card-rating">
+                        <StarRateRoundedIcon />
+                        <p>{card.rating}</p>
+                    </div>
+                </div>
+                <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.address}</p>
+                <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.type}</p>
+                <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
+                    <span style={{ fontWeight: "600" }}>₹{card.price.total * 80}</span> night
+                </p>
+            </CardActionArea>
 
+
+        </div>
+    );
+}
 export default Card;

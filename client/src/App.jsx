@@ -5,6 +5,8 @@ import './App.css';
 import Header from "./components/header/header"
 import Filter from "./components/Filter"
 function App() {
+  const [selectedFilter, setSelectedFilter] = useState(0);
+
 
   const [data, setData] = useState([]);
   const fetchData = async () => {
@@ -20,9 +22,11 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-  const [selectedFilter, setSelectedFilter] = useState(0);
+
   console.log("inside index.js");
   console.log(data);
+
+
   return (
     <div className="App">
 
@@ -31,7 +35,7 @@ function App() {
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
       />
-      {selectedFilter == 0 ? <Cards list={list} /> : <Cards list={list2} />}
+      {selectedFilter == 0 ? <Cards list={data} /> : <Cards list={list2} />}
     </div>
   );
 }
