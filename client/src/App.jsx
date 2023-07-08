@@ -21,9 +21,8 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log("inside index.js");
   console.log(data);
-
+  console.log("inside index.js")
 
   return (
     <div className="App">
