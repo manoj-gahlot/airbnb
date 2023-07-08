@@ -1,0 +1,16 @@
+.room-view {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    margin: auto;
+    height: 500px;
+    gap: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.room-view>* {
+    width: 45%;
+    box-sizing: border-box;
+    padding: 0;
+}

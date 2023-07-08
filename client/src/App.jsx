@@ -4,10 +4,9 @@ import Cards from "./components/Cards";
 import './App.css';
 import Header from "./components/header/header"
 import Filter from "./components/Filter"
+// import homes from "./assets/homes";
 function App() {
   const [selectedFilter, setSelectedFilter] = useState(0);
-
-
   const [data, setData] = useState([]);
   const fetchData = async () => {
     fetch('/airbnb/data')
@@ -22,7 +21,6 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-
   console.log("inside index.js");
   console.log(data);
 
@@ -35,7 +33,7 @@ function App() {
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
       />
-      {selectedFilter == 0 ? <Cards list={data} /> : <Cards list={list2} />}
+      {selectedFilter === 0 ? <Cards list={data} /> : <Cards list={list2} />}
     </div>
   );
 }

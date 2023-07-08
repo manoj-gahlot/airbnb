@@ -1,0 +1,81 @@
+{
+  "_id": {
+    "$oid": "64a80e4da6818939e62f3e80"
+  },
+  "id": "607615419424049048",
+  "url": "https://www.airbnb.com/rooms/607615419424049048",
+  "deeplink": "https://www.airbnb.com/rooms/607615419424049048?check_in=2023-09-16&check_out=2023-09-17&adults=1&children=0&infants=0&pets=0",
+  "position": 19,
+  "name": "Sweet Home Queen Size Bed  a/c & windows",
+  "bathrooms": 2,
+  "bedrooms": 1,
+  "beds": 2,
+  "city": "Mumbai",
+  "images": [
+    "https://a0.muscache.com/im/pictures/f81bd80b-343c-4c8e-902e-9c38dc4865b2.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/fb719c00-6e4f-4993-a9ea-681ccbc736eb.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/d2417cb8-ad93-4631-be8e-f6ecebe0b91e.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/88b612d7-b3ae-4fa3-b616-890db2481417.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/45b20ccb-b8af-4268-9152-ffbc4a9763ed.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/376f8d80-904c-4d7a-88ad-6e803e51aee8.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/d0dcc2e2-7692-41f3-8b0d-780bea2f52a2.jpg?im_w=720",
+    "https://a0.muscache.com/im/pictures/eaff522a-8787-498a-b84a-b43d34dff1d0.jpg?im_w=720"
+  ],
+  "hostThumbnail": "https://a0.muscache.com/im/pictures/user/User-270664876/original/1ed1d765-de11-4e96-a0d9-b3255da7c61e.jpeg?aki_policy=profile_x_medium",
+  "isSuperhost": false,
+  "rareFind": false,
+  "lat": 19.11363,
+  "lng": 72.82459,
+  "persons": 1,
+  "reviewsCount": 30,
+  "rating": 4.33,
+  "type": "Private room in villa",
+  "userId": 270664876,
+  "address": "Mumbai, Maharashtra, India",
+  "amenityIds": [
+    674,
+    4,
+    5,
+    37,
+    39,
+    40,
+    104,
+    137,
+    42,
+    394,
+    12,
+    44,
+    45,
+    77,
+    46,
+    47,
+    146,
+    308,
+    87,
+    89,
+    665,
+    91,
+    93
+  ],
+  "previewAmenities": [
+    "Air conditioning",
+    "Wifi"
+  ],
+  "cancelPolicy": "CANCEL_MODERATE",
+  "price": {
+    "rate": 1287,
+    "currency": "INR",
+    "total": 1287,
+    "priceItems": [
+      {
+        "amount": 999
+      },
+      {
+        "amount": 168
+      },
+      {
+        "amount": 120
+      }
+    ]
+  }
+}

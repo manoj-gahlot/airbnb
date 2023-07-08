@@ -14,6 +14,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'roompage/build')));
 
 
 var chunks = [];
@@ -67,6 +68,7 @@ async function main() {
         .catch((error) => {
             console.error('Error retrieving homes', error);
         });
+    Home.deleteMany();
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
@@ -102,29 +104,33 @@ async function main() {
 
 // req.end();
 
-app.get("/airbnb", function (request, res) {
-    // res.json({ "users": ["userOne", "userTwo", "userThree"] });
-    // res.send("Hello");
-    // res.sendFile(__dirname + "/index.html");
-    // res.send(body)
-    // res.send(JSON.parse(chunks));
-    // // console.log(req);
-    // res.send(body.string);
-    // res.send("Hello");
-    // res.json(chunks);
-    // console.log(chunks);
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
-})
+//send data at http://localhost:3000
 app.get("/airbnb/data", function (req, res) {
     res.json(chunks);
 })
-app.get("/homepage/", function (req, res) {
-    console.log(chunks[0]);
-    res.render("homepage", { result: chunks[0] });
 
+//route for airbnb is set at http://localhost:3000/airbnb
+app.route("/airbnb").get(function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
-app.get("/rooms/:id", function (req, res) {
-    console.log(req);
-    console.log(req.params.id);
+
+// app.get("/homepage/", function (req, res) {
+//     console.log(chunks[0]);
+//     res.render("homepage", { result: chunks[0] });
+
+// });
+var id = 688884912481539032;
+app.route("/rooms/:roomId").get(function (req, res) {
+    id = req.params.roomId;
+    res.sendFile(path.join(__dirname, 'roompage/build/index.html'));
+
+}).post(function (req, res) {
+    console.log("got some data");
 });
-app.listen(3000);
+app.get("/room/data", function (req, res) {
+    const item = chunks.filter((item) => {
+        return (item.id == id)
+    })
+    res.json(item[0]);
+});
+app.listen(3000, () => console.log("listening at port 3000"));

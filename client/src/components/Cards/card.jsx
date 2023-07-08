@@ -11,9 +11,10 @@ import { CardActionArea } from '@mui/material';
 function Card({ card }) {
     return (
         <div className="card-box">
-            <CardActionArea>
-                <img src={card.images[0]} className="card-img" />
-                {/* <Swiper
+            <a href={"/rooms/" + card.id} target="_blank">
+                <CardActionArea>
+                    <img src={card.images[0]} className="card-img" />
+                    {/* <Swiper
         slidesPerView={1}
         spaceBetween={15}
         loop={true}
@@ -29,21 +30,20 @@ function Card({ card }) {
           </SwiperSlide>
         ))}
       </Swiper> */}
-                <div className="card-info-flex">
-                    <h3 className="card-title">{card.city}</h3>
-                    <div className="card-rating">
-                        <StarRateRoundedIcon />
-                        <p>{card.rating}</p>
+                    <div className="card-info-flex">
+                        <h3 className="card-title">{card.city}</h3>
+                        <div className="card-rating">
+                            <StarRateRoundedIcon />
+                            <p>{card.rating}</p>
+                        </div>
                     </div>
-                </div>
-                <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.address}</p>
-                <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.type}</p>
-                <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
-                    <span style={{ fontWeight: "600" }}>₹{card.price.total * 80}</span> night
-                </p>
-            </CardActionArea>
-
-
+                    <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.address}</p>
+                    <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.type}</p>
+                    <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
+                        <span style={{ fontWeight: "600" }}>₹{card.price.total}</span> night
+                    </p>
+                </CardActionArea>
+            </a>
         </div>
     );
 }

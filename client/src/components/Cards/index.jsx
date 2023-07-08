@@ -2,6 +2,9 @@ import React from "react";
 import Card from "./card";
 import "./styles.css";
 function Cards({ list }) {
+  function selectedCard() {
+
+  }
   return (
     <div className="cards-flex">
       {list.map((card, i) => (
