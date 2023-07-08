@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -5,6 +6,11 @@
 
 
 
+=======
+// import React from "react"
+// import ReactDOM from "react-dom";
+// ReactDOM.render(<h1>Hi</h1>, document.getElementById("root"));
+>>>>>>> react
 document.addEventListener("DOMContentLoaded", function () {
     var gallery = document.querySelector(".image-gallery");
     var masonry;
