@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -6,6 +7,11 @@
 
 
 
+=======
+// import React from "react"
+// import ReactDOM from "react-dom";
+// ReactDOM.render(<h1>Hi</h1>, document.getElementById("root"));
+>>>>>>> react
 =======
 // import React from "react"
 // import ReactDOM from "react-dom";
