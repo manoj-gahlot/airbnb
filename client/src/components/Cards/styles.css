@@ -17,6 +17,11 @@ a {
 .card-box {
   margin: 1rem;
   margin-bottom: 2rem;
+  transition: all 0.25s;
+}
+
+.card-box:hover {
+  transform: scale(1.02);
 }
 
 .swiper-container {

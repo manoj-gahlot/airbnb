@@ -30,18 +30,21 @@ function Card({ card }) {
           </SwiperSlide>
         ))}
       </Swiper> */}
-                    <div className="card-info-flex">
-                        <h3 className="card-title">{card.city}</h3>
-                        <div className="card-rating">
-                            <StarRateRoundedIcon />
-                            <p>{card.rating}</p>
+                    <div className="card-content">
+                        <div className="card-info-flex">
+                            <h3 className="card-title">{card.city}</h3>
+                            <div className="card-rating">
+                                <StarRateRoundedIcon />
+                                <p>{card.rating}</p>
+                            </div>
                         </div>
+                        <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.address}</p>
+                        <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.type}</p>
+                        <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
+                            <span style={{ fontWeight: "600" }}>₹{card.price.total}</span> night
+                        </p>
                     </div>
-                    <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.address}</p>
-                    <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.type}</p>
-                    <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
-                        <span style={{ fontWeight: "600" }}>₹{card.price.total}</span> night
-                    </p>
+
                 </CardActionArea>
             </a>
         </div>
