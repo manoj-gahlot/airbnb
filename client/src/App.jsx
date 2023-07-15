@@ -1,39 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { list, list2 } from "./assets/cards-list";
 import Cards from "./components/Cards";
-import './App.css';
-import Header from "./components/header/header"
-import Filter from "./components/Filter"
-// import homes from "./assets/homes";
+import "./App.css";
+import Header from "./components/header/header";
+import Filter from "./components/Filter";
+import list from "./assets/homes";
+
 function App() {
   const [selectedFilter, setSelectedFilter] = useState(0);
-  const [data, setData] = useState([]);
+  const [cardsUpdated, setCardsUpdated] = useState(0);
+  const [data, setData] = useState(list);
+
   const fetchData = async () => {
-    fetch('/airbnb/data')
-      .then(response => response.json())
-      .then(data => {
-        setData(data);
+    fetch("/airbnb/data")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length > 0) {
+          setData(data);
+          setCardsUpdated(cardsUpdated + 1); // Trigger rerender
+        }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   console.log("inside index.js");
   console.log(data);
 
-
   return (
     <div className="App">
-
-      <Header />
+      <Header searchButtonClicked={() => setCardsUpdated(cardsUpdated + 1)} />
       <Filter
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
       />
-      {selectedFilter === 0 ? <Cards list={data} /> : <Cards list={list2} />}
+      <Cards key={cardsUpdated} list={data} /> {/* Add key prop for rerender */}
     </div>
   );
 }

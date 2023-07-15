@@ -8,10 +8,10 @@ import BasicMenu from "./ProfileMenu";
 import SimpleBottomNavigation from "./BottomNav";
 
 import MobileSearchBar from "../MobileSearchBar";
-function Header() {
+function Header({ searchButtonClicked }) {
     return <div className="navbar">
         <img src={logo} alt="logo" className="navbar-logo" />
-        <InputBar />
+        <InputBar searchButtonClicked={searchButtonClicked} />
         <div className="profile-container">
             <div className="airbnb-your-home">Airbnb your home</div>
             <div className="airbnb-your-home">
