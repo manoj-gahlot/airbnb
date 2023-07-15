@@ -27,14 +27,9 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-<<<<<<< HEAD
-  console.log(data);
-  console.log("inside index.js")
-=======
 
   console.log("inside index.js");
   console.log(data);
->>>>>>> react
 
   return (
     <div className="App">
