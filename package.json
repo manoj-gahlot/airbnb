@@ -18,6 +18,7 @@
     "mongoose": "^7.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "request": "^2.88.2",
     "swiper": "^10.0.3"
   },
   "devDependencies": {
