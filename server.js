@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'roompage/build')));
 
 
 var homes = [];
+// var chunks = [];
 
 // main().catch(err => console.log(err));
 
@@ -210,7 +211,7 @@ app.route("/airbnb").get(function (req, res) {
         response.on('end', function () {
             const body = Buffer.concat(chunks);
             const data = JSON.parse(body);
-            // console.log(data);
+            console.log(data);
             // console.log(data.results[0].images[2]);
             homes = data.results;
             // console.log(homes);
@@ -219,7 +220,7 @@ app.route("/airbnb").get(function (req, res) {
     });
 
     request.end();
-
+    console.log("printing homes")
     console.log(homes);
     res.redirect("/airbnb");
 
