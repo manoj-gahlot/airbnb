@@ -3,12 +3,12 @@ import Cards from "./components/Cards";
 import "./App.css";
 import Header from "./components/header/header";
 import Filter from "./components/Filter";
-import list from "./assets/homes";
+// import list from "./assets/homes";
 
 function App() {
   const [selectedFilter, setSelectedFilter] = useState(0);
   const [cardsUpdated, setCardsUpdated] = useState(0);
-  const [data, setData] = useState(list);
+  const [data, setData] = useState([]);
 
   const fetchData = async () => {
     fetch("/airbnb/data")

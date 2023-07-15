@@ -5,7 +5,7 @@ const ejs = require("ejs");
 const path = require("path");
 const mongoose = require('mongoose');
 const request = require('request');
-
+const defaultData = require("./homes");
 const app = express();
 
 
@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.static(path.join(__dirname, 'roompage/build')));
 
 
-var homes = [];
+var homes = defaultData;
 // var chunks = [];
 
 // main().catch(err => console.log(err));
@@ -191,7 +191,7 @@ app.route("/airbnb").get(function (req, res) {
     //     }
     // };
     console.log(req.body);
-    const pathapi = '/search-location?location=' + encodeURIComponent(cityName) + '&checkin=' + encodeURIComponent(checkin) + '&checkout=' + encodeURIComponent(checkout) + '&adults=1&children=0&infants=0&pets=0&page=1&currency=USD';
+    const pathapi = '/search-location?location=' + encodeURIComponent(cityName) + '&checkin=' + encodeURIComponent(checkin) + '&checkout=' + encodeURIComponent(checkout) + '&adults=1&children=0&infants=0&pets=0&page=1&currency=INR';
     console.log(pathapi);
     console.log(encodeURIComponent(pathapi));
     const options = {
@@ -206,25 +206,25 @@ app.route("/airbnb").get(function (req, res) {
     };
 
 
-    // const request = https.request(options, function (response) {
-    //     const chunks = [];
-    //     response.on('data', function (chunk) {
-    //         chunks.push(chunk);
-    //     });
+    const request = https.request(options, function (response) {
+        const chunks = [];
+        response.on('data', function (chunk) {
+            chunks.push(chunk);
+        });
 
-    //     response.on('end', function () {
-    //         const body = Buffer.concat(chunks);
-    //         console.log(body);
-    //         const data = JSON.parse(body);
-    //         console.log(data);
-    //         // console.log(data.results[0].images[2]);
-    //         homes = data.results;
-    //         // console.log(homes);
-    //         // res.send(body);
-    //     });
-    // });
+        response.on('end', function () {
+            const body = Buffer.concat(chunks);
+            console.log(body);
+            const data = JSON.parse(body);
+            console.log(data);
+            // console.log(data.results[0].images[2]);
+            homes = data.results;
+            // console.log(homes);
+            // res.send(body);
+        });
+    });
 
-    // request.end();
+    request.end();
     console.log("printing homes")
     console.log(homes);
     res.redirect("/airbnb");
@@ -237,7 +237,7 @@ app.route("/airbnb").get(function (req, res) {
 //     res.render("homepage", { result: chunks[0] });
 
 // });
-var id = 688884912481539032;
+var id = homes[0].id;
 app.route("/rooms/:roomId").get(function (req, res) {
     id = req.params.roomId;
     res.sendFile(path.join(__dirname, 'roompage/build/index.html'));
