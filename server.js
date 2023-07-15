@@ -190,11 +190,15 @@ app.route("/airbnb").get(function (req, res) {
     //         'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
     //     }
     // };
+    console.log(req.body);
+    const pathapi = '/search-location?location=' + encodeURIComponent(cityName) + '&checkin=' + encodeURIComponent(checkin) + '&checkout=' + encodeURIComponent(checkout) + '&adults=1&children=0&infants=0&pets=0&page=1&currency=USD';
+    console.log(pathapi);
+    console.log(encodeURIComponent(pathapi));
     const options = {
         method: 'GET',
         hostname: 'airbnb13.p.rapidapi.com',
         port: null,
-        path: '/search-location?location=Paris&checkin=2023-09-16&checkout=2023-09-17&adults=1&children=0&infants=0&pets=0&page=1&currency=USD',
+        path: pathapi,
         headers: {
             'X-RapidAPI-Key': '5a16a39cedmsh1ba15b79da8fee1p1f55e5jsn1be2ff636a83',
             'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
@@ -202,24 +206,25 @@ app.route("/airbnb").get(function (req, res) {
     };
 
 
-    const request = https.request(options, function (response) {
-        const chunks = [];
-        response.on('data', function (chunk) {
-            chunks.push(chunk);
-        });
+    // const request = https.request(options, function (response) {
+    //     const chunks = [];
+    //     response.on('data', function (chunk) {
+    //         chunks.push(chunk);
+    //     });
 
-        response.on('end', function () {
-            const body = Buffer.concat(chunks);
-            const data = JSON.parse(body);
-            console.log(data);
-            // console.log(data.results[0].images[2]);
-            homes = data.results;
-            // console.log(homes);
-            // res.send(body);
-        });
-    });
+    //     response.on('end', function () {
+    //         const body = Buffer.concat(chunks);
+    //         console.log(body);
+    //         const data = JSON.parse(body);
+    //         console.log(data);
+    //         // console.log(data.results[0].images[2]);
+    //         homes = data.results;
+    //         // console.log(homes);
+    //         // res.send(body);
+    //     });
+    // });
 
-    request.end();
+    // request.end();
     console.log("printing homes")
     console.log(homes);
     res.redirect("/airbnb");
