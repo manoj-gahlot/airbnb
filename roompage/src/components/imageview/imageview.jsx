@@ -1,9 +1,9 @@
 import * as React from 'react';
 import "./styles.css";
 export default function QuiltedImageList({ itemimages }) {
-    console.log(itemimages);
+    // console.log(itemimages);
     return (
-        <div class="image-container">
+        <div className="image-container">
             {itemimages.map((item, index) => (
                 <div className="image">
                     <img src={item} alt='item' />

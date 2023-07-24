@@ -62,6 +62,7 @@ function InputBar({ searchButtonClicked }) {
             {showMenuBar &&
                 <form action="/airbnb" method="post">
                     <input className="city-input-name" type="text" name="cityName" id="cityName" placeholder="City" />
+                    {/* <input className="city-input-name" type="text" data-role="input" data-search-button="true" name="cityName" id="cityName" placeholder="City" /> */}
                     <div className="date-input"><label htmlFor="checkin">Check-In</label>
                         <input type="date" name="checkin" onChange={handleDateChange} id="checkin" value={dateBegin} min={today} max={dateEnd} /></div>
                     <div className="date-input"><label htmlFor="checkout">Check-Out</label>
