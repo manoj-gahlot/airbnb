@@ -1,5 +1,6 @@
+require('dotenv').config();
 const express = require("express");
-require('dotenv').config()
+
 const bodyParser = require("body-parser");
 const https = require("https");
 const ejs = require("ejs");
@@ -7,21 +8,25 @@ const path = require("path");
 const mongoose = require('mongoose');
 const request = require('request');
 const defaultData = require("./homes");
-const app = express();
-const bcrypt = require('bcrypt');
-const { Hash } = require("crypto");
-const { encode } = require("punycode");
-const saltRounds = 3;
 
-// main().catch(err => console.log(err));
+
+
+const app = express();
+// const bcrypt = require('bcrypt');
+// const { Hash } = require("crypto");
+// const { encode } = require("punycode");
+// const saltRounds = 3;
+
+
+
 app.set("view engine", "ejs");
-// console.log(process.env.RAPIDAPIKEY);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.static(path.join(__dirname, 'roompage/build')));
 
 
+//will send default homes data when requested at route /airbnb/data
 var homes = defaultData;
 app.get("/airbnb/data", function (req, res) {
     res.json(homes);
@@ -35,10 +40,12 @@ app.route("/airbnb").get(function (req, res) {
         var cityName = req.body.cityName;
         var checkin = req.body.checkin;
         var checkout = req.body.checkout;
-        console.log(req.body);
+
+
+        // console.log(req.body);
         const pathapi = '/search-location?location=' + encodeURIComponent(cityName) + '&checkin=' + encodeURIComponent(checkin) + '&checkout=' + encodeURIComponent(checkout) + '&adults=1&children=0&infants=0&pets=0&page=1&currency=INR';
-        console.log(pathapi);
-        console.log(encodeURIComponent(pathapi));
+        // console.log(pathapi);
+        // console.log(encodeURIComponent(pathapi));
         const options = {
             method: 'GET',
             hostname: 'airbnb13.p.rapidapi.com',
@@ -56,24 +63,26 @@ app.route("/airbnb").get(function (req, res) {
             response.on('data', function (chunk) {
                 chunks.push(chunk);
             });
-
             response.on('end', function () {
                 const body = Buffer.concat(chunks);
-                console.log(body);
                 const data = JSON.parse(body);
-                console.log(data);
-                // console.log(data.results[0].images[2]);
                 homes = data.results;
+                
+                // console.log(body);
+                // console.log(data);
+                // console.log(data.results[0].images[2]);
                 // console.log(homes);
                 // res.send(body);
             });
         });
 
         request.end();
-        console.log("printing homes")
-        console.log(homes);
         res.redirect("/airbnb");
 
+
+
+        // console.log("printing homes")
+        // console.log(homes);
         // console.log({ cityName, checkin, checkout });
     });
 
