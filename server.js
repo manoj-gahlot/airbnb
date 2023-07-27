@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config()
 const bodyParser = require("body-parser");
 const https = require("https");
 const ejs = require("ejs");
@@ -9,11 +10,12 @@ const defaultData = require("./homes");
 const app = express();
 const bcrypt = require('bcrypt');
 const { Hash } = require("crypto");
+const { encode } = require("punycode");
 const saltRounds = 3;
 
 // main().catch(err => console.log(err));
 app.set("view engine", "ejs");
-
+// console.log(process.env.RAPIDAPIKEY);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -43,7 +45,8 @@ app.route("/airbnb").get(function (req, res) {
             port: null,
             path: pathapi,
             headers: {
-                // < hidden >
+                'X-RapidAPI-Key': process.env.RAPIDAPIKEY,
+                'X-RapidAPI-Host': process.env.RAPIDAPIHOST
             }
         };
 
@@ -95,7 +98,7 @@ app.get("/room/data", function (req, res) {
 });
 app.route("/bookingdata").post(async function (req, res) {
     try {
-        await mongoose.connect('mongodb+srv://<hidden>@cluster0.uwpvb2c.mongodb.net/airbnbbookingdata', { useNewUrlParser: true, useUnifiedTopology: true });
+        await mongoose.connect('mongodb+srv://'+ encodeURIComponent(process.env.MONGOSSEADMIN) +':'+ encodeURIComponent(process.env.MONGOSSEPASSWORD) +'@cluster0.uwpvb2c.mongodb.net/airbnbbookingdata', { useNewUrlParser: true, useUnifiedTopology: true });
         const BookingSchema = new mongoose.Schema({
             numberOfGuests: { type: Number, required: true },
             checkin: { type: Date, required: true },
@@ -106,8 +109,8 @@ app.route("/bookingdata").post(async function (req, res) {
             totalAmount: { type: Number },
             paymentMethod: { type: String },
             specialRequests: { type: String },
-            createdAt: { type: Date, default: Date.now },
-            updatedAt: { type: Date, default: Date.now }
+            createdAt: { type: Date, default: Date.now() },
+            updatedAt: { type: Date, default: Date.now() }
         });
         // var id;
         console.log("Connected to MongoDB");
