@@ -3,7 +3,9 @@
 Airbnb clone 
 
 ## Demo
-![Alt text](airbnb-project.gif)
+![Alt text](airbnbproject.gif)
+
+
 ## Run Locally
 
 Clone the project
