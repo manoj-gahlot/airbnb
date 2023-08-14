@@ -67,7 +67,7 @@ function InputBar({ searchButtonClicked }) {
                         <input type="date" name="checkin" onChange={handleDateChange} id="checkin" value={dateBegin} min={today} max={dateEnd} /></div>
                     <div className="date-input"><label htmlFor="checkout">Check-Out</label>
                         <input type="date" name="checkout" onChange={handleDateChange} id="checkout" value={dateEnd} min={dateBegin} max="2023-12-31" /></div>
-                    <button type="submit" name="search" onClick={() => searchButtonClicked(1)}>Search</button>
+                    <button type="submit" name="search" onClick={() => searchButtonClicked()}>Search</button>
                 </form>}
         </div>
     </div>);

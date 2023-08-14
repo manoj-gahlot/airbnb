@@ -11,7 +11,7 @@ function App() {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    fetch("/airbnb/data")
+    await fetch("/airbnb/data")
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [cardsUpdated]);
 
   console.log("inside index.js");
   console.log(data);
