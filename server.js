@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const request = require('request');
 const defaultData = require("./homes");
 
-
+const Bschema =  require('./schema/bookingSchema.js');
 
 const app = express();
 // const bcrypt = require('bcrypt');
@@ -31,12 +31,14 @@ var homes = defaultData;
 app.get("/airbnb/data", function (req, res) {
     res.json(homes);
 })
-
+// app.get("/", function (req, res){
+//     res.redirect("/airbnb");
+// });
 //route for airbnb is set at http://localhost:3000/airbnb
-app.route("/airbnb").get(function (req, res) {
+app.route("/airbnb","/").get(function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build/index.html'));
 })
-    .post(function (req, res) {
+    .post(async function (req, res) {
         var cityName = req.body.cityName;
         var checkin = req.body.checkin;
         var checkout = req.body.checkout;
@@ -58,7 +60,7 @@ app.route("/airbnb").get(function (req, res) {
         };
 
 
-        const request = https.request(options, function (response) {
+        const request = await https.request(options, function (response) {
             const chunks = [];
             response.on('data', function (chunk) {
                 chunks.push(chunk);
@@ -108,30 +110,18 @@ app.get("/room/data", function (req, res) {
 app.route("/bookingdata").post(async function (req, res) {
     try {
         await mongoose.connect('mongodb+srv://'+ encodeURIComponent(process.env.MONGOSSEADMIN) +':'+ encodeURIComponent(process.env.MONGOSSEPASSWORD) +'@cluster0.uwpvb2c.mongodb.net/airbnbbookingdata', { useNewUrlParser: true, useUnifiedTopology: true });
-        const BookingSchema = new mongoose.Schema({
-            numberOfGuests: { type: Number, required: true },
-            checkin: { type: Date, required: true },
-            checkout: { type: Date, required: true },
-            guestName: { type: String, required: true },
-            guestEmail: { type: String, required: true },
-            bookingStatus: { type: String, enum: ["confirmed", "pending", "cancelled"], default: "pending" },
-            totalAmount: { type: Number },
-            paymentMethod: { type: String },
-            specialRequests: { type: String },
-            createdAt: { type: Date, default: Date.now() },
-            updatedAt: { type: Date, default: Date.now() }
-        });
-        // var id;
         console.log("Connected to MongoDB");
-        const Bookdata = mongoose.model('bookingdata', BookingSchema);
+        const Bookdata =  Bschema;
 
         const booking = new Bookdata({
             numberOfGuests: req.body.guest,
             checkin: req.body.checkin,
             checkout: req.body.checkout,
-            guestName: 'John Doe',
-            guestEmail: 'johndoe@example.com',
+            guestName: 'krishna',
+            guestEmail: 'krishna@rama.com',
             bookingStatus: 'pending',
+            hostid: id,
+            hostname: 'Ramakrishnan',
             totalAmount: 500, // Assuming the total booking cost is $500
             paymentMethod: 'credit card',
             specialRequests: 'Late check-in required'
