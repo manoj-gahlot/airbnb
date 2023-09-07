@@ -16,7 +16,7 @@ function App() {
       .then((data) => {
         if (data.length > 0) {
           setData(data);
-          setCardsUpdated(cardsUpdated + 1); // Trigger rerender
+          // setCardsUpdated(cardsUpdated + 1); // Trigger rerender
         }
       })
       .catch((error) => {
@@ -30,6 +30,7 @@ function App() {
 
   console.log("inside index.js");
   console.log(data);
+  console.log(cardsUpdated);
 
   return (
     <div className="App">
